@@ -1,0 +1,89 @@
+﻿@model OnlineShop.Models.ProductSearchModel
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("Index", "Product", FormMethod.Get))
+{
+    <div class="container">
+
+        <div class="col-md-2"></div>
+        <div class="col-md-8 ">
+            @Html.ValidationSummary(false)
+            <br />
+            <br />
+            <br />
+            <div style="border-bottom:0px solid #bbb"><h1>Search Result</h1></div>
+            <br />
+            <table style="border:1px;width:500px">
+                @*<tr>
+                    <td>
+                        <div class="editor-label">@Html.LabelFor(model=>model.ProductName)</div>
+                        <div class="editor-field">
+                            @Html.TextAreaFor(model=>model.ProductName)
+                            @Html.ValidationMessageFor(model=>model.ProductName)
+                        </div>
+                    </td>
+
+                    <td>
+                        <div class="editor-label">@Html.LabelFor(model => model.Price)</div>
+                        <div class="editor-field">
+                            @Html.TextAreaFor(model => model.Price)
+                            @Html.ValidationMessageFor(model => model.Price)
+                        </div>
+                    </td>
+                    <td style="vertical-align:bottom;">
+                        <input name="SearchButton" type="submit" value="Search" class="add-to-cart" style="width:120px" />
+                    </td>
+                </tr>*@
+            </table>
+            @if (Model.SearchResults != null && Model.SearchResults.Count > 0)
+            {
+                <table class="table" style=" width:auto; height:auto">
+                    <thead class="panel-heading">
+                        <tr class="info">
+                            <th>Product ID</th>
+                            <th>Product Name</th>
+                            <th>Image</th>
+                            <th>Unit Price</th>                            
+                            <th></th>
+                        </tr>
+                    </thead>
+
+                    <tbody class="table-bordered">
+                        @foreach (var prod in Model.SearchResults)
+                        {
+
+                            <tr>
+                                <td>@prod.ProductID</td>
+                                <td>@prod.Name</td>
+                                <td><a href="@Url.Action("Detail","Detail",new { @id = prod.ProductID})"><img src="/assets/client/images/sp/@prod.ProductID/main.jpg" alt="" style="width:auto; height:50%;"></a></td>
+                                <td>@prod.UnitPrice</td>                                
+                                <td>
+                                    @using (Html.BeginForm("AddToCart", "ShoppingCart", new { @prod = prod.ProductID, @strUrl = Request.Url.ToString() }))
+                                    {
+                                        <input type="submit" style="cursor:pointer; width:120px" value="Add To Cart" id="btnCart" class="add-to-cart" />
+                                    }
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+
+                </table>
+                @Html.PagedListPager(Model.SearchResults,
+        page => Url.Action("Index", new RouteValueDictionary() {
+            { "Page",page },
+            { "ProductName", Model.ProductName },
+            { "Price", Model.Price }
+        }),
+        PagedListRenderOptions.PageNumbersOnly)
+            }
+        </div>
+
+        <div class="col-md-2"></div>
+    </div>
+}
+
+

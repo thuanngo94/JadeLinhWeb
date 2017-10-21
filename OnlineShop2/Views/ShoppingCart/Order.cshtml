@@ -1,0 +1,79 @@
+﻿@using OnlineShop.Models
+@model List<Cart>
+@{
+    ViewBag.Title = "Cart";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href="/assets/client/css/bootstrap.css" rel="stylesheet">
+<link href="/assets/client/css/bootstrap.min.css" rel="stylesheet">
+<h2 style="color:brown;padding-top:20px;">Order</h2>
+<div class="form-group">
+    
+        @if (Model.Count > 0)
+        {
+            <table class="table">
+                <thead class="panel-heading">
+                    <tr class="info">
+                        <td>Product ID</td>
+                        <td>Product Name</td>
+                        <td>Image</td>
+                        <td>Unit Price</td>
+                        <td>Quantity</td>
+                        <td>Total</td>
+                        <td></td>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.ProductID</td>
+                            <td>@item.ProductName</td>
+                            <td><a href="@Url.Action("Detail","Detail",new { @id = item.ProductID})"><img src="/assets/client/images/sp/@item.ProductID/main.jpg" alt="" style="width:auto; height:50%;"></a></td>
+                            <td>$@item.UnitPrice</td>
+                            <td>@item.Quantity</td>
+                            <td>$@item.Total</td>
+                            <td colspan="6" style="text-align:right;">@Html.ActionLink("Edit Carts", "EditCart")</td>
+                        </tr>
+
+                    }
+                    <tr>
+                        <td colspan="6" style="text-align:right;color:cornflowerblue; ">
+                           
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <span class="alert alert-danger">Sorry! There is no products to Order. </span>
+        }
+    <div class="row">
+        <div class="col-md-6">
+            @using (Html.BeginForm("Order", "ShoppingCart"))
+            {
+                <div class="form-group">
+                    <label>Your Name</label>
+                    <input name="customerName" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label>Phone Number</label>
+                    <input name="phone" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label>Address</label>
+                    <input name="address" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input name="email" class="form-control" />
+                </div>
+                <input type="submit" value="Order" style="width:120px" />
+            }
+        </div>
+    </div>
+</div>
+
+

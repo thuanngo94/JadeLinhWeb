@@ -1,0 +1,305 @@
+﻿@using OnlineShop.Models
+@using OnlineShop.Common
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="KietTran" content="">   
+    <title>Jade Linh Shop</title>
+    @Styles.Render("~/assets/client/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link rel="shortcut icon" href="/assets/client/images/ico/favicon.ico">
+    <!-- Bootstrap-CSS -->
+    <link href="/assets/client/css/style1.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/assets/client/css/fluid_dg.css" id="fluid_dg-css" type="text/css" media="all">
+    <link rel="stylesheet" href="/assets/client/css/style.css" type="text/css" media="all">
+    @*<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">*@
+    <link rel="stylesheet" href="/assets/client/css/Style2.css" />
+    <link href="/assets/client/css/main.css" rel="stylesheet">
+    <link href="/assets/client/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/assets/client/css/prettyPhoto.css" rel="stylesheet">
+    <link href="/assets/client/css/price-range.css" rel="stylesheet">
+    <link href="/assets/client/css/animate.css" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/client/css/bootstrap.css" type="text/css" media="all">
+    <link href="/assets/client/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!--End Bootstrap-CSS -->      	      
+    <!--Script-->
+    <script src="/assets/client/js/jquery.min.js"></script>
+    <script src="/assets/client/js/jquery-2.2.3.js"></script>
+    <script src="/assets/client/js/wow.min.js"></script> 
+    <script type="text/javascript" src="/assets/client/js/bootstrap-3.1.1.min.js"></script> 
+    <script src="/assets/client/js/modernizr-2.6.2-respond-1.1.0.min.js"></script> 
+    <!--End_Script-->          
+    <!-- Fonts -->
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noto+Serif:400,700" type="text/css" media="all">    
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500" type="text/css" media="all">
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>           
+    <!-- End_Fonts -->    
+
+    <!--Css-Menu-->
+    <link rel="stylesheet" type="text/css" href="/Content/css/normalize.css" />
+    <link rel="stylesheet" type="text/css" href="/Content/css/demo.css" />
+    <link rel="stylesheet" type="text/css" href="/Content/css/component.css" />    
+    <!--End_menu-->
+    <!--Js_Menu-->
+    <script src="/Content/js/modernizr.custom.js"></script>
+    <!--js_Menu-->
+</head>
+<body>  
+    @{
+        var session = (UserLogin)Session[OnlineShop.Common.CommonConstants.USER_SESSION];
+    }
+ <div class="container" style="background-color:#4CAF50">
+    <div class="row">
+        <div class="col-sm-12">
+            <ul id="gn-menu" class="gn-menu-main">
+                <li><a href="@Url.Action("Index","Home")"><img src="~/assets/client/images/Logo.svg" class="img-responsive" style="width:100%"/></a></li>
+                <li class="gn-trigger">
+                    <a class="gn-icon gn-icon-menu"><span>Menu</span></a>
+                    <nav class="gn-menu-wrapper">
+                        <div class="gn-scroller">
+                            <ul class="gn-menu">
+                                <li class="gn-search-item">
+                                    @using (Html.BeginForm("Index", "Product", FormMethod.Get))
+                                    {
+                                        <input placeholder="Search" type="search" name="SearchButton" class="gn-search" value="" required="">
+                                        <a class="gn-icon gn-icon-search"><span>Search</span></a>
+                                    }
+                                </li>
+                                <li><a href="#" class="gn-icon gn-icon-pictures">LINEN DRESS</a></li>
+                                <li><a href="#" class="gn-icon gn-icon-pictures">LONG DRESS</a></li>
+                                <li><a href="#" class="gn-icon gn-icon-pictures">BA BA</a></li>
+                                <li><a href="@Url.Action("Contact","Contact")" class="gn-icon gn-icon-earth">CONTACT</a></li>
+                                <li><a href="@Url.Action("Register","User")" class="gn-icon gn-icon-cog">SIGN UP</a></li>
+                                <li><a href="#"><i class="gn-icon gn-icon-archive"></i>CHECKOUT</a></li>
+                                <li>                                   
+                                    @if (session == null)
+                                    {
+                                        <li><a href="@Url.Action("Login","User")"><i class="gn-icon gn-icon-download" aria-hidden="true">&nbsp;SIGN IN</i></a></li>
+                                        <li style="padding-left:20px;">@Html.Action("CartPartial", "ShoppingCart")</li>
+                                    }
+                                    else
+                                    {
+                                        <li style="padding-top:10px;" class="dropdown"><span>Welcome @session.UserName</span></li>
+                                        <li>@Html.Action("CartPartial", "ShoppingCart")</li>
+                                        <li>
+                                            <div class="dropdown">
+                                                <button class="dropbtn">Account</button>
+                                                <div class="dropdown-content">
+                                                    <ul class="nav">
+                                                        <li><a href="#">My Profile</a></li>
+                                                        <li> <a href="#">My Order</a></li>
+                                                        <li><a href="@Url.Action("Logout", "User")"><i class="fa fa-lock" aria-hidden="true">&nbsp;Logout</i></a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <style>
+                                                /* Style The Dropdown Button */
+                                                .dropbtn {
+                                                    background-color: #4CAF50;
+                                                    color: white;
+                                                    padding: 5px;
+                                                    font-size: small;
+                                                    border: none;
+                                                    cursor: pointer;
+                                                    width: initial;
+                                                    height: auto;
+                                                }
+                                                /* The container <div> - needed to position the dropdown content */
+                                                .dropdown {
+                                                    position: fixed;
+                                                    display: inline-block;
+                                                }
+
+                                                /* Dropdown Content (Hidden by Default) */
+                                                .dropdown-content {
+                                                    display: none;
+                                                    position: absolute;
+                                                    background-color: #f9f9f9;
+                                                    min-width: 160px;
+                                                    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+                                                    z-index: 1;
+                                                }
+
+                                                    /* Links inside the dropdown */
+                                                    .dropdown-content a {
+                                                        color: white;
+                                                        padding: 12px 16px;
+                                                        text-decoration: none;
+                                                        display: block;
+                                                    }
+
+                                                        /* Change color of dropdown links on hover */
+                                                        .dropdown-content a:hover {
+                                                            background-color: #ffffff;
+                                                        }
+
+                                                /* Show the dropdown menu on hover */
+                                                .dropdown:hover .dropdown-content {
+                                                    display: block;
+                                                }
+
+                                                /* Change the background color of the dropdown button when the dropdown content is shown */
+                                                .dropdown:hover .dropbtn {
+                                                    background-color: #3e8e41;
+                                                }
+                                            </style>
+                                        </li>
+                                    }
+                                </ul>
+                         </div><!-- /gn-scroller --> 
+                    </nav>
+                 </li>                                                                  
+            </ul>       
+        </div>                      
+     </div>
+ </div> <!-- /container -->
+ <div class="well">
+        <div class="features_items" style="max-width:100%;">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="pp_content_container">
+                        
+                        @RenderBody()
+                    </div>
+                </div>
+            </div>
+        </div>
+ </div>            
+ <footer id="footer">
+            <!--Footer-->
+            <div class="footer-top">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <div class="companyinfo">
+                                @*<a href="@Url.Action("Index","Home")"><img src="~/assets/client/images/Logo.svg" id="jadelinh_logo" /></a>
+                                    <p> - Jade Linh Shop </p>*@
+                            </div>
+                        </div>
+                        <div class="col-sm-7">
+
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="address">
+                                <img src="~/assets/client/images/map.png" alt="" />
+                                <p>Ho Chi Minh City</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-widget">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <div class="single-widget">
+                                <h2>Service</h2>
+                                <ul class="nav nav-pills nav-stacked">
+                                    <li><a href="#">Online Help</a></li>
+                                    <li><a href="@Url.Action("Contact","Contact")">Contact Us</a></li>
+                                    <li><a href="#">Order Status</a></li>
+                                    <li><a href="#">Change Location</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-sm-2">
+                            <div class="single-widget">
+                                <h2>Quock Shop</h2>
+                                <ul class="nav nav-pills nav-stacked">
+                                    <li><a href="#">Linen Dress</a></li>
+                                    <li><a href="#">Long Dress</a></li>
+                                    <li><a href="#">Womens</a></li>
+                                    <li><a href="#">Gift Cards</a></li>
+                                    <li><a href="#">Cach Tan</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-sm-2">
+                            <div class="single-widget">
+                                <h2>Policies</h2>
+                                <ul class="nav nav-pills nav-stacked">
+                                    <li><a href="#">Terms of Use</a></li>
+                                    <li><a href="#">Privecy Policy</a></li>
+                                    <li><a href="#">Refund Policy</a></li>
+                                    <li><a href="#">Billing System</a></li>
+                                    <li><a href="#">Ticket System</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-sm-2">
+                            <div class="single-widget">
+                                <h2>About Shopper</h2>
+                                <ul class="nav nav-pills nav-stacked">
+                                    <li><a href="#">Company Information</a></li>
+                                    <li><a href="#">Careers</a></li>
+                                    <li><a href="#">Store Location</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-sm-3 col-sm-offset-1">
+                            <div class="single-widget">
+                                <h2>Contact with us</h2>
+                                <form action="#" class="searchform">
+                                    <input type="text" placeholder="Your email address" />
+                                    <button type="submit" class="btn btn-danger"><i class="fa fa-arrow-circle-o-right"></i></button>
+                                    <p>Get the most recent updates from <br />our site and be updated your self...</p>
+                                </form>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="container">
+                    <div class="row">
+                        <p class="pull-left">© 2017 Jadelinh Shop </p>
+                    </div>
+                </div>
+            </div>
+ </footer><!--/Footer-->
+
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @RenderSection("scripts", required: false)
+        <!-- Default-JavaScript -->
+        <script src="/assets/client/js/jquery-2.2.3.js"></script>
+        <script src="/assets/client/js/modernizr.custom.js"></script>
+        <script src="/assets/client/js/imagezoom.js"></script>
+        <script src="/assets/client/js/classie.js"></script>
+        <script type='text/javascript' src='/assets/client/js/jquery.easing.1.3.js'></script>
+        <script type='text/javascript' src='/assets/client/js/fluid_dg.min.js'></script>
+        <script src="/assets/client/js/jquery.film_roll.js"></script>
+        <!-- Custom-JavaScript-File-Links -->
+        <!-- Header-Slider-JavaScript-Files -->
+        <script>
+       jQuery(document).ready(function () {
+            jQuery(function () {
+                jQuery('#fluid_dg_wrap_4').fluid_dg({
+                    height: 'auto',
+                    loader: 'bar',
+                    pagination: false,
+                    thumbnails: true,
+                    hover: false,
+                    opacityOnGrid: false,
+                    imagePath: '',
+                    time: 4000,
+                    transPeriod: 2000,
+                });
+            });
+        })
+        </script>
+        <!-- //Header-Slider-JavaScript-Files -->
+        <!--js-menu-->    
+        <script src="/Content/js/classie.js"></script>
+        <script src="/Content/js/gnmenu.js"></script>
+        <script>
+            new gnMenu(document.getElementById('gn-menu'));
+        </script>
+        <!--js-menu-->
+    </body>
+</html>

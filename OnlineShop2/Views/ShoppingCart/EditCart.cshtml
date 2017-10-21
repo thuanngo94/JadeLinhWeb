@@ -1,0 +1,48 @@
+﻿@using OnlineShop.Models
+@model List<Cart>
+@{
+    ViewBag.Title = "Edit Cart";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href="/assets/client/css/bootstrap.css" rel="stylesheet">
+<link href="/assets/client/css/bootstrap.min.css" rel="stylesheet">
+<h2>Your Cart</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <td>Product ID</td>
+            <td>Product Name</td>
+            <td>Image</td>
+            <td>Unit Price</td>
+            <td>Quantity</td>
+            <td>Total</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        { 
+                <tr>
+                    <td>@item.ProductID</td>
+                    <td>@item.ProductName</td>
+                    <td><img src="/assets/client/images/sp/@item.ProductID/main.jpg" alt=""style="width:auto;height:50%"></td>
+                    <td>$@item.UnitPrice</td>
+
+                    @*Edit Cart , call to Action update cart*@
+
+                    @using (Html.BeginForm("UpdateCart", "ShoppingCart", new { @productID = item.ProductID }))
+                    {
+
+                        <td>@Html.TextBox("txtQuantity", item.Quantity)</td>                                              
+                        <td>$@item.Total</td>
+                        <td><input type="submit" value="Update" /></td>
+
+                        <td>                       
+                            @*Delete cart call to action delete cart *@
+                            @Html.ActionLink("Delete", "DeleteCart", new { @productID = item.ProductID })
+                        </td>
+                    }
+                </tr>               
+        }
+    </tbody>
+</table>

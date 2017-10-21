@@ -1,0 +1,313 @@
+﻿@{
+    ViewBag.Title = "Women";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using OnlineShop.Models;
+@model List<Product>
+<!-- Css Of Products Pages-->
+<link href="/assets/client/css/animate1.min.css" rel="stylesheet" />
+@*<link href="/assets/client/css/bootstrap1.css" rel="stylesheet" />*@
+<link href="/assets/client/css/flexslider1.css" rel="stylesheet" />
+<link href="/assets/client/css/jquery1-ui.css" rel="stylesheet" />
+<link href="/assets/client/css/jquery1.countdown.css" rel="stylesheet" />
+<link href="/assets/client/css/style1.css" rel="stylesheet" />
+<script src="/assets/client/js/script.js"></script>
+<!-- Css Of Products Pages-->
+<!--Add to cart--> 
+<!--Add to cart-->
+
+
+<!-- Slider-->    
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <div id="w3slideraits" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#slider-carousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#slider-carousel" data-slide-to="1"></li>
+                    <li data-target="#slider-carousel" data-slide-to="2"></li>
+                    <li data-target="#slider-carousel" data-slide-to="3"></li>
+                </ol>
+                <div class="carousel-inner">
+                    <div class="item active">
+                        <div class="col-sm-6">
+                            <h1><span>Apron</span>&nbsp; Fashion</h1>
+                            <h2>Sale off 50%</h2>
+                            <p>Shop a vibrant blend of both this season’s hottest trends & everyday wardrobe-essentials.</p>
+                            <button type="button" class="btn btn-default get">Get it now</button>
+                        </div>
+                        <div class="col-sm-6">
+                            <img src="/assets/client/images/Women/Apron/apr_slide2.jpg" class="girl img-responsive" alt="" />
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="col-sm-6">
+                            <h1><span>Long Dress</span>&nbsp;Collection</h1>
+                            <h2>Quality</h2>
+                            <p>Shop a vibrant blend of both this season’s hottest trends & everyday wardrobe-essentials.</p>
+                            <button type="button" class="btn btn-default get">Get it now</button>
+                        </div>
+                        <div class="col-sm-6">
+                            <img src="/assets/client/images/Women/AoDai/slide.png"  class="girl img-responsive" alt="" />
+                        </div>
+                    </div>
+
+                    <div class="item">
+                        <div class="col-sm-6">
+                            <h1><span>Ba Ba</span>&nbsp;</h1>
+                            <h2>Free Ship</h2>
+                            <p>Shop a vibrant blend of both this season’s hottest trends & everyday wardrobe-essentials.</p>
+                            <button type="button" class="btn btn-default get">Get it now</button>
+                        </div>
+                        <div class="col-sm-6">
+                            <img src="/assets/client/images/Women/baba/bb2.jpg" class="girl img-responsive" alt="" />
+                        </div>
+                    </div>
+
+                    <div class="item">
+                        <div class="col-sm-6">
+                            <h1><span>Long Dress</span>&nbsp;Traditional</h1>
+                            <h2>Services For Customer</h2>
+                            <p>Shop a vibrant blend of both this season’s hottest trends & everyday wardrobe-essentials.</p>
+                            <button type="button" class="btn btn-default get">Get it now</button>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <img src="/assets/client/images/Women/AoDai/ad2.jpg"  class="girl img-responsive" alt="" />
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Slider-->
+<br />
+<br />
+
+<div class="container">
+    <ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s" > 
+        <li><a href="@Url.Action("Index","Home")"><span class="glyphicon glyphicon-home" aria-hidden="false"></span>&nbsp;Home</a></li>
+        <li class="active">Women</li>
+    </ol>
+</div>
+
+<div class="products">
+    <div class="container">
+        <div class="col-md-4 products-left">
+            <div class="filter-price animated wow slideInUp" data-wow-delay=".5s">             
+            </div>
+            <div class="categories animated wow slideInUp" data-wow-delay=".5s">
+                <h3>Categories</h3>
+                <ul class="cate">
+                    @Html.Action("PartialList", "SubCategory", new { id = 2 })
+                               
+                </ul>
+            </div>
+            <div class="new-products animated wow slideInUp" data-wow-delay=".5s">
+                <h3>New Products</h3>
+                <div class="new-products-grids">
+                    <div class="new-products-grid">
+                        <div class="new-products-grid-left">
+                            <a href="single.html"><img src="/assets/client/images/Women/new/product1.jpg" alt=" " class="img-responsive" /></a>
+                        </div>
+                        <div class="new-products-grid-right">
+                            <h4><a href="single.html">occaecat cupidatat</a></h4>
+                            <div class="rating">
+                                <div class="rating-left">
+                                    <img src="/assets/client/images/2.png" alt=" " class="img-responsive">
+                                </div>
+                                <div class="rating-left">
+                                    <img src="/assets/client/images/2.png" alt=" " class="img-responsive">
+                                </div>
+                                <div class="rating-left">
+                                    <img src="/assets/client/images/2.png" alt=" " class="img-responsive">
+                                </div>
+                                <div class="rating-left">
+                                    <img src="/assets/client/images/1.png" alt=" " class="img-responsive">
+                                </div>
+                                <div class="rating-left">
+                                    <img src="/assets/client/images/1.png" alt=" " class="img-responsive">
+                                </div>
+                                <div class="clearfix"> </div>
+                            </div>
+                            <div class="simpleCart_shelfItem new-products-grid-right-add-cart">
+                                <p> <span class="item_price">$180</span><a class="item_add" href="#">add to cart </a></p>
+                            </div>
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+                    <div class="new-products-grid">
+                        <div class="new-products-grid-left">
+                            <a href="single.html"><img src="/assets/client/images/Women/new/product3.jpg" alt=" " class="img-responsive" /></a>
+                        </div>
+                        <div class="new-products-grid-right">
+                            <h4><a href="single.html">eum fugiat quo</a></h4>
+                            <div class="rating">
+                                <div class="rating-left">
+                                    <img src="/assets/client/images/2.png" alt=" " class="img-responsive">
+                                </div>
+                                <div class="rating-left">
+                                    <img src="/assets/client/images/2.png" alt=" " class="img-responsive">
+                                </div>
+                                <div class="rating-left">
+                                    <img src="/assets/client/images/2.png" alt=" " class="img-responsive">
+                                </div>
+                                <div class="rating-left">
+                                    <img src="/assets/client/images/1.png" alt=" " class="img-responsive">
+                                </div>
+                                <div class="rating-left">
+                                    <img src="/assets/client/images/1.png" alt=" " class="img-responsive">
+                                </div>
+                                <div class="clearfix"> </div>
+                            </div>
+                            <div class="simpleCart_shelfItem new-products-grid-right-add-cart">
+                                <p> <span class="item_price">$250</span><a class="item_add" href="#">add to cart </a></p>
+                            </div>
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+                    <div class="new-products-grid">
+                        <div class="new-products-grid-left">
+                            <a href="single.html"><img src="/assets/client/images/Women/new/product4.jpg" alt=" " class="img-responsive" /></a>
+                        </div>
+                        <div class="new-products-grid-right">
+                            <h4><a href="single.html">officia deserunt</a></h4>
+                            <div class="rating">
+                                <div class="rating-left">
+                                    <img src="/assets/client/images/2.png" alt=" " class="img-responsive">
+                                </div>
+                                <div class="rating-left">
+                                    <img src="/assets/client/images/2.png" alt=" " class="img-responsive">
+                                </div>
+                                <div class="rating-left">
+                                    <img src="/assets/client/images/2.png" alt=" " class="img-responsive">
+                                </div>
+                                <div class="rating-left">
+                                    <img src="/assets/client/images/1.png" alt=" " class="img-responsive">
+                                </div>
+                                <div class="rating-left">
+                                    <img src="/assets/client/images/1.png" alt=" " class="img-responsive">
+                                </div>
+                                <div class="clearfix"> </div>
+                            </div>
+                            <div class="simpleCart_shelfItem new-products-grid-right-add-cart">
+                                <p> <span class="item_price">$259</span><a class="item_add" href="#">add to cart </a></p>
+                            </div>
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+                </div>
+            </div>
+            <div class="men-position animated wow slideInUp" data-wow-delay=".5s">
+                <a href="single.html"><img src="/assets/client/images/Women/AoDai/Traditional/ad1.jpg" alt=" " class="img-responsive" /></a>
+                <div class="men-position-pos">
+                    <h4  style="color:black;">Traditional Long Dress Collection</h4>
+                    <h5><span>55%</span> Flat Discount</h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8 products-right">
+            <div class="products-right-grid">
+                <div class="products-right-grids animated wow slideInRight" data-wow-delay=".5s">
+                    <div class="sorting">
+                        <select id="country" onchange="change_country(this.value)" class="frm-field required sect">
+                            <option value="null">Default sorting</option>
+                            <option value="null">Sort by popularity</option>
+                            <option value="null">Sort by average rating</option>
+                            <option value="null">Sort by price</option>
+                        </select>
+                    </div>
+                    <div class="sorting-left">
+                        <select id="country1" onchange="change_country(this.value)" class="frm-field required sect">
+                            <option value="null">Item on page 9</option>
+                            <option value="null">Item on page 18</option>
+                            <option value="null">Item on page 32</option>
+                            <option value="null">All</option>
+                        </select>
+                    </div>
+                    <div class="clearfix"> </div>
+                </div>
+                <div class="products-right-grids-position animated wow slideInRight" data-wow-delay=".5s">
+                    <img src="/assets/client/images/Women/AoDai/banner.jpg" alt=" " class="img-responsive" />
+                    <div class="products-right-grids-position1">
+                        <h4>2017 New Collection</h4>
+                        <p>
+                            Temporibus autem quibusdam et aut officiis debitis aut rerum
+                            necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae
+                            non recusandae.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="products-right-grids-bottom">
+                @foreach (var pro in Model)
+                {
+                    <div class="col-md-4 products-right-grids-bottom-grid">
+                        <div class="new-collections-grid1 products-right-grid1 animated wow slideInUp" data-wow-delay=".5s">
+                            <div class="new-collections-grid1-image">
+                                <a href="#" class="product-image"><img src="/assets/client/images/sp/@pro.ProductID/main.jpg" alt="" class="img-responsive"></a>
+                                <div class="new-collections-grid1-image-pos products-right-grids-pos">
+                                    <a href="@Url.Action("Detail", "Detail", new { id = @pro.ProductID })">View Detail</a>
+                                </div>
+                                <div class="new-collections-grid1-right products-right-grids-pos-right">
+                                    <div class="rating">
+                                        <div class="rating-left">
+                                            <img src="/assets/client/images/2.png" alt=" " class="img-responsive">
+                                        </div>
+                                        <div class="rating-left">
+                                            <img src="/assets/client/images/2.png" alt=" " class="img-responsive">
+                                        </div>
+                                        <div class="rating-left">
+                                            <img src="/assets/client/images/2.png" alt=" " class="img-responsive">
+                                        </div>
+                                        <div class="rating-left">
+                                            <img src="/assets/client/images/1.png" alt=" " class="img-responsive">
+                                        </div>
+                                        <div class="rating-left">
+                                            <img src="/assets/client/images/1.png" alt=" " class="img-responsive">
+                                        </div>
+                                        <div class="clearfix"> </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <h4><a href="@Url.Action("Detail", "Detail", new { id = @pro.ProductID })">@pro.Name</a></h4>
+                            <p>@pro.ShortDescription</p>
+                            <div class="simpleCart_shelfItem products-right-grid1-add-cart">
+                                <p>
+                                    <span class="item_price">$@pro.UnitPrice</span>
+                                    <a class="add-to-cart" href="@Url.Action("Index","MyCart")">add to cart </a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                }                             
+           <div class="clearfix"> </div>
+      </div>
+            <nav class="numbering animated wow slideInRight" data-wow-delay=".5s">
+                <ul class="pagination paging">
+                    <li>
+                        <a href="#" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    <li class="active"><a href="#">1<span class="sr-only">(current)</span></a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                    <li>
+                        <a href="#" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+      
+        <div class="clearfix"> </div>
+    </div>
+</div>
+

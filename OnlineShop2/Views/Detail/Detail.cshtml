@@ -1,0 +1,360 @@
+﻿
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using OnlineShop.Models;
+@model Product
+<script defer src="/assets/client/js/jquery.flexslider.js"></script>    
+<link rel="stylesheet" href="/assets/client/css/flexslider.css" type="text/css" media="screen" />
+<style>
+    .container {
+        margin-top: 50px;
+        margin-left: 50px;
+    }
+
+    button.qty-change {
+        height: 30px;
+        width: 30px;
+        border-radius: 50%;
+        background: #fff;
+        border: 1px solid #e3e3e3;
+    }
+
+    .qty-input {
+        height: 30px;
+        width: 80px;
+        text-align: center;
+    }
+</style>
+
+<div class="container">
+    <section id="aa-product-details">
+        <div class="single">
+            <div class="container">
+                <div class="row">
+                    <!--Images Product Detail Slider -->
+                    <div class="col-md-4 single-right-left">
+                        <div class="grid images_3_of_2">
+                            <div class="flexslider">
+                                <ul class="slides">
+                                    <li data-thumb="/assets/client/images/sp/@Model.ProductID/main.jpg" class="simpleLens-big-image-container">
+                                        <div class="thumb-image"> <img src="/assets/client/images/sp/@Model.ProductID/main.jpg" data-imagezoom="true" class="img-responsive"> </div>
+                                    </li>
+                                    <li data-thumb="/assets/client/images/sp/@Model.ProductID/main_thumb1.jpg">
+                                        <div class="thumb-image"> <img src="/assets/client/images/sp/@Model.ProductID/main_thumb1.jpg" data-imagezoom="true" class="img-responsive"> </div>
+                                    </li>
+                                    <li data-thumb="/assets/client/images/sp/@Model.ProductID/main_thumb2.jpg">
+                                        <div class="thumb-image"> <img src="/assets/client/images/sp/@Model.ProductID/main_thumb2.jpg" data-imagezoom="true" class="img-responsive"> </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Images Product Detail Slider -->
+                    <!-- Name, Price, Description Of Products -->
+                    <div class="col-md-8 single-right-left simpleCart_shelfItem">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h3>@Model.Name</h3>
+                                        <h4><span class="item_price">$@Model.UnitPrice</span></h4>
+                                    </div>
+                                </div> <!--End row_price-->
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        @if (Model.Discount != 0)
+                                        {
+                                            <span class="label label-primary">Discount: @Model.Discount %</span>
+                                        }
+                                        <div class="rating1">
+                                            <span class="starRating">
+                                                <input id="rating5" type="radio" name="rating" value="5">
+                                                <label for="rating5">5</label>
+                                                <input id="rating4" type="radio" name="rating" value="4">
+                                                <label for="rating4">4</label>
+                                                <input id="rating3" type="radio" name="rating" value="3" checked>
+                                                <label for="rating3">3</label>
+                                                <input id="rating2" type="radio" name="rating" value="2">
+                                                <label for="rating2">2</label>
+                                                <input id="rating1" type="radio" name="rating" value="1">
+                                                <label for="rating1">1</label>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div><!--End row_rating-->
+                                <div class="description">
+                                    <p>@Model.ShortDescription</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="col-md-8">
+                                    <div class="color-quality-left">
+                                        <h5>Color</h5>                                       
+                                    <!--Color Products-->
+                                      <div class="product-variation">
+                                          <ul style="padding:0px;">
+                                              <li class="attributes box-infos colorAttribute">
+                                                  <div class="swatches color">
+                                                      <span class="label"></span>
+                                                      <div class="swiper-container swiper-color">
+                                                          <ul class="product-colors swiper-wrapper sku-product-colors">
+                                                              <li class="emptyswatch swiper-slide">
+                                                                  <a href="#" class="swatchanchor tooltipArea" title="white" style="display: inline-block; height: 43px; width: 43px; text-decoration: none; background: url(../../assets/client/images/color/white.jpg) repeat-y;"data-lgimg="../../assets/client/images/sp/@Model.ProductID/main.jpg"></a>
+                                                              </li>
+                                                              <li class="emptyswatch swiper-slide">
+                                                                  <a href="#" class="swatchanchor tooltipArea" title="black" style="display: inline-block; height: 43px; width: 43px; text-decoration: none; background: url(../../assets/client/images/color/black.jpg) repeat-y;" data-lgimg="../../assets/client/images/sp/@Model.ProductID/main.jpg"></a>
+                                                              </li>
+                                                              <li class="emptyswatch swiper-slide">
+                                                                  <a href="#" class="swatchanchor tooltipArea" title="red" style="display: inline-block; height: 43px; width: 43px; text-decoration: none; background: url(../../assets/client/images/color/red.jpg) repeat-y;" data-lgimg="../../assets/client/images/sp/@Model.ProductID/main.jpg"></a>
+                                                              </li>
+                                                              <li class="emptyswatch swiper-slide">
+                                                                  <a href="#" class="swatchanchor tooltipArea" title="yellow" style="display: inline-block; height: 43px; width: 43px; text-decoration: none; background: url(../../assets/client/images/color/yellow.jpg) repeat-y;" data-lgimg="../../assets/client/images/sp/@Model.ProductID/main.jpg"></a>
+                                                              </li>
+                                                              <li class="emptyswatch swiper-slide">
+                                                                  <a href="#" class="swatchanchor tooltipArea" title="lemon balm" style="display: inline-block; height: 43px; width: 43px; text-decoration: none; background: url(../../assets/client/images/color/lemonbalm.jpg) repeat-y;" data-lgimg="../../assets/client/images/sp/@Model.ProductID/main.jpg"></a>
+                                                              </li>
+                                                              <li class="emptyswatch swiper-slide">
+                                                                  <a href="#" class="swatchanchor tooltipArea" title="blue" style="display: inline-block; height: 43px; width: 43px; text-decoration: none; background: url(../../assets/client/images/color/blue.jpg) repeat-y;" data-lgimg="../../assets/client/images/sp/@Model.ProductID/main.jpg"></a>
+                                                              </li>
+                                                          </ul>
+                                                      </div>
+                                                  </div>
+                                              </li>
+                                          </ul>
+                                      </div>
+                                     <!--Color Products-->
+                                    </div>
+                                    <div class="clearfix"> </div>
+                                </div>
+                                <!--Quantity-->
+                                <div class="col-md-4">
+                                    <div class="color-quality-right">                                      
+                                        <h5>Quantity</h5>
+                                        <div class="color-quality">                                          
+                                             <div class="input-group">
+                                                 <span class="input-group-btn">
+                                                      <button type="button" class="quantity-left-minus btn btn-danger btn-number" data-type="minus" data-field="">
+                                                         <span class="glyphicon glyphicon-minus"></span>
+                                                      </button>
+                                                  </span>                                                     
+                                                        <input type="text" id="quantity" name="quantity" class="form-control input-number" value="1" min="1" max="100">
+                                                  <span class="input-group-btn">
+                                                      <button type="button" class="quantity-right-plus btn btn-success btn-number" data-type="plus" data-field="">
+                                                         <span class="glyphicon glyphicon-plus"></span>
+                                                      </button>
+                                                 </span>
+                                             </div>
+                                          </div>                                          
+                                    </div>
+                                    <script type="text/javascript">
+                                    $(document).ready(function () {
+                                        var quantitiy = 0;
+                                        $('.quantity-right-plus').click(function (e) {
+
+                                            // Stop acting like a button
+                                            e.preventDefault();
+                                            // Get the field name
+                                            var quantity = parseInt($('#quantity').val());
+
+                                            // If is not undefined
+                                            $('#quantity').val(quantity + 1);
+                                            // Increment
+
+                                        });
+
+                                        $('.quantity-left-minus').click(function (e) {
+                                            // Stop acting like a button
+                                            e.preventDefault();
+                                            // Get the field name
+                                            var quantity = parseInt($('#quantity').val());
+
+                                            // If is not undefined
+
+                                            // Increment
+                                            if (quantity > 0) {
+                                                $('#quantity').val(quantity - 1);
+                                            }
+                                        });
+
+                                    });
+                                    </script>
+                                    <!-- Script Quantity-->
+                                </div>                               
+                                <!--End_Quantity-->
+                            </div>
+                        </div>
+                        <div class="occasional">
+                            @using (Html.BeginForm("AddToCart", "ShoppingCart", new { @productID = Model.ProductID, @strUrl = Request.Url.ToString()}))
+                            {
+                                <input type="submit" style="cursor:pointer; height:35px" value="Add To Cart" id="btnCart" class="add-to-cart" />
+                            }
+                        </div>
+                        <!--Social_Network-->
+                        <div class="social">
+                            <div class="social-left">
+                                <p>Share On :</p>
+                                @*<table>
+                                    <tr>
+
+                                    </tr>
+                                </table>*@                                
+                            </div>
+                            <div class="social-right">
+                                <ul class="social-icons">
+                                    <li>
+                                    <a href="https://www.facebook.com/" class="facebook"></a>
+                                    </li>
+                                    <li><a href="https://plus.google.com/u/0/" class="g"></a></li>
+                                    <li><a href="https://www.instagram.com/" class="instagram"></a></li>
+                                </ul>
+                            </div>
+                            <div class="clearfix"> </div>
+                        </div>
+                        <!--End_Social_Network-->
+                        <!-- Long Description,Information, Review About Products -->
+                        <div class="bootstrap-tab animated wow slideInUp" data-wow-delay=".5s">
+                            <div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
+                                <ul id="myTab" class="nav nav-tabs" role="tablist">
+                                    <li role="presentation" class="active"><a href="#home" id="home-tab" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">Description</a></li>
+                                    <li role="presentation"><a href="#profile" role="tab" id="profile-tab" data-toggle="tab" aria-controls="profile">Comments</a></li>
+                                    @*<li role="presentation"><a href="#comment"role="tab" id="review-tab" data-toggle="tab" aria-controls="review">Reviews</a></li>*@
+                                </ul>
+                                <div id="myTabContent" class="tab-content">
+                                    <div role="tabpanel" class="tab-pane fade in active bootstrap-tab-text" id="home" aria-labelledby="home-tab">
+                                        <h5>Product Description</h5>
+                                        <p>
+                                            <span>@Model.LongDescription</span>
+                                        </p>
+                                    </div>
+                                    <div role="tabpanel" class="tab-pane fade bootstrap-tab-text" id="profile" aria-labelledby="profile-tab">
+                                        <div class="bootstrap-tab-text-grids">
+                                            <div class="bootstrap-tab-text-grid">
+                                                <!-- begin wwww.htmlcommentbox.com -->
+                                                <div id="HCB_comment_box">
+                                                    <a href="http://www.htmlcommentbox.com">Comment Form</a> is loading comments...
+                                                </div>
+                                                @*<link rel="stylesheet" type="text/css" href="//www.htmlcommentbox.com/static/skins/bootstrap/twitter-bootstrap.css?v=0" />*@
+                                                <script type="text/javascript" id="hcb">
+                                                    /*<!--*/ if (!window.hcb_user) { hcb_user = {}; } (function () { var s = document.createElement("script"), l = hcb_user.PAGE || ("" + window.location).replace(/'/g, "%27"), h = "//www.htmlcommentbox.com"; s.setAttribute("type", "text/javascript"); s.setAttribute("src", h + "/jread?page=" + encodeURIComponent(l).replace("+", "%2B") + "&opts=16862&num=10&ts=1508121655387"); if (typeof s != "undefined") document.getElementsByTagName("head")[0].appendChild(s); })(); /*-->*/ 
+                                                </script>
+                                                <!-- end www.htmlcommentbox.com -->
+                                            </div>                                           
+                                        </div>
+                                    </div>
+                                    @*<div role="tabpanel" class="tab-pane fade in active bootstrap-tab-text" id="review" aria-labelledby="review-tab">
+                                        <div class="bootstrap-tab-text-grid">
+                                            <h3>Ratings</h3><!-- start Star Ratings -->
+                                            <script data-sil-id='59e41e0f52a4c7001a63746e'> (function () { var d = document, w = window, l = window.location, p = l.protocol == 'file:' ? 'http://' : '//'; if (!w.WS) w.WS = {}; c = w.WS; var m = function (t, o) { var e = d.getElementsByTagName('script'); e = e[e.length - 1]; var n = d.createElement(t); if (t == 'script') { n.async = true; } for (k in o) n[k] = o[k]; e.parentNode.insertBefore(n, e) }; m('script', { src: p + 'bawkbox.com/widget/star-rating/59e41e0f52a4c7001a63746e?page=' + encodeURIComponent(l + ''), type: 'text/javascript' }); c.load_net = m; })();</script>
+                                            <div class='sil-widget-star-rating sil-widget' id='sil-widget-59e41e0f52a4c7001a63746e'><a href='https://bawkbox.com/install/star-rating'>Star Ratings</a></div>
+                                            <!-- end Star Ratings -->
+                                            <div class="clearfix"> </div>
+                                        </div>
+                                    </div>*@
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Long Description,Information, Review About Products -->
+                    </div>
+                    <div class="clearfix"> </div>
+                    <!-- Name, Price, Description Of Products -->
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+        </div>
+        <!-- Default-JavaScript -->
+        <script src="/assets/client/js/jquery-2.2.3.js"></script>
+        <script src="/assets/client/js/modernizr.custom.js"></script>
+        <!-- Custom-JavaScript-File-Links -->
+        <!-- cart-js -->
+        <script src="/assets/client/js/minicart.js"></script>
+        <script>
+            w3l.render();
+            w3l.cart.on('w3agile_checkout', function (evt) {
+                var items, len, i;
+                if (this.subtotal() > 0) {
+                    items = this.items();
+
+                    for (i = 0, len = items.length; i < len; i++) {
+                    }
+                }
+            });
+        </script>
+        <!-- //cart-js -->
+        <!-- Dropdown-Menu-JavaScript -->
+        <script>
+            $(document).ready(function () {
+                $(".dropdown").hover(
+                    function () {
+                        $('.dropdown-menu', this).stop(true, true).slideDown("fast");
+                        $(this).toggleClass('open');
+                    },
+                    function () {
+                        $('.dropdown-menu', this).stop(true, true).slideUp("fast");
+                        $(this).toggleClass('open');
+                    }
+                );
+            });
+        </script>
+        <!-- //Dropdown-Menu-JavaScript -->
+        <!-- Popup-Box-JavaScript -->
+        <script src="/assets/client/js/jquery.magnific-popup.js" type="text/javascript"></script>
+        <script>
+            $(document).ready(function () {
+                $('.popup-with-zoom-anim').magnificPopup({
+                    type: 'inline',
+                    fixedContentPos: false,
+                    fixedBgPos: true,
+                    overflowY: 'auto',
+                    closeBtnInside: true,
+                    preloader: false,
+                    midClick: true,
+                    removalDelay: 300,
+                    mainClass: 'my-mfp-zoom-in'
+                });
+            });
+        </script>
+        <!-- //Popup-Box-JavaScript -->
+        <!-- FlexSlider-JavaScript -->
+        <script defer src="/assets/client/js/jquery.flexslider.js"></script>
+        <script>
+            $(window).load(function () {
+                $('.flexslider').flexslider({
+                    animation: "slide",
+                    controlNav: "thumbnails"
+                });
+            });
+        </script>
+        <!-- //FlexSlider-JavaScript -->
+        <!-- ImageZoom-JavaScript -->
+        <script src="/assets/client/js/imagezoom.js"></script>
+        <!-- //Custom-JavaScript-File-Links -->
+        <!-- Bootstrap-JavaScript -->
+        <script src="/assets/client/js/bootstrap.js"></script>
+        <!-- Script Quantity-->
+        <script type="text/javascript">
+            $("#quantity").TouchSpin({
+                min: 1,
+                max: 999999999,
+                verticalbuttons: true
+            });
+
+        </script>
+        <!-- flixslider -->
+        <script>
+            // Can also be used with $(document).ready()
+            $(window).load(function () {
+                $('.flexslider').flexslider({
+                    animation: "slide",
+                    controlNav: "thumbnails"
+                });
+            });
+        </script>
+        <!-- flixslider -->
+    </section>
+
+</div>
+  

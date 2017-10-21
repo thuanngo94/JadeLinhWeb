@@ -1,0 +1,51 @@
+﻿@model OnlineShop.Models.LoginModel
+
+@{
+    ViewBag.Title = "";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+            <div class="login-panel panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Please Sign In</h3>
+
+                    <h3>@ViewBag.Message</h3>
+                </div>
+                <div class="panel-body">
+                    @using (Html.BeginForm("Login", "User", FormMethod.Post))
+                    {
+                        @Html.ValidationSummary("Login", "Login", "error")
+
+                        <fieldset>
+                            <div class="form-group">
+                                @Html.TextBox("txtUserName")
+                            </div>
+                            <div class="form-group">
+                                @Html.Password("txtPassword")
+                            </div>
+
+                            <div class="checkbox">
+                                <label>
+                                    @Html.CheckBoxFor(model => model.RememberMe) Remember Me
+                                </label>
+                            </div>
+                            <!-- Change this to a button or input when using this as a form -->
+                            <button type="submit" class="btn btn-lg btn-success btn-block">Login</button>
+                        </fieldset>
+                    }
+
+                </div>
+            </div>
+            <div class="login-panel panel panel-default">
+                <span>If you not have account, please click register now!</span>
+                @using (Html.BeginForm("Register", "User"))
+                {
+                    <a href="@Url.Action("Register","User")"><span>Register</span></a>
+                }
+            </div>
+         </div>
+    </div>
+</div>

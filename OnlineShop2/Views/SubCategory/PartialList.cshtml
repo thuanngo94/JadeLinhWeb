@@ -1,0 +1,10 @@
+﻿@using OnlineShop.Models
+
+@model List<SubCategory>
+@foreach (SubCategory c in Model)
+{
+    <li><a href="@Url.Action("Women", "Product", new { id = @c.CategoryID, subID = @c.SubCategoryID })"><i class="fa fa-angle-right" aria-hidden="true"></i>@c.Name</a></li>
+    
+}
+
+

@@ -1,0 +1,9 @@
+﻿@using OnlineShop.Models
+
+@model List<Categories>
+    @foreach (Categories c in Model)
+    {
+        <a href="@Url.Action("Men", "Product", new { id = @c.CategoryID })">
+            @c.Name
+        </a>
+    }
